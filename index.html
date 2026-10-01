@@ -5,271 +5,347 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>David Moya Castillo · Data Scientist</title>
   <meta name="description" content="Portfolio de David Moya Castillo, Data Scientist junior en Madrid. Proyectos de machine learning, series temporales, deep learning y reinforcement learning.">
+  <meta name="theme-color" content="#060a1a">
   <meta property="og:title" content="David Moya Castillo · Data Scientist">
   <meta property="og:description" content="Data Scientist junior en Madrid. Modelización, machine learning e IA generativa.">
   <meta property="og:image" content="https://dmoyitacast.github.io/assets/img/regression.png">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231d4ed8'/%3E%3Ctext x='16' y='21.5' font-family='Arial,sans-serif' font-size='14' font-weight='700' fill='white' text-anchor='middle'%3EDM%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23060a1a'/%3E%3Ctext x='16' y='21.5' font-family='monospace' font-size='14' font-weight='700' fill='%2360a5fa' text-anchor='middle'%3EDM%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script>
-    // Apply saved theme/language before paint to avoid a flash
+    // Apply saved language before paint to avoid a flash
     try {
-      var t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t;
       var l = localStorage.getItem("lang") || ((navigator.language || "es").slice(0, 2) === "es" ? "es" : "en");
       document.documentElement.dataset.lang = l; document.documentElement.lang = l;
     } catch (e) {}
   </script>
 </head>
 <body>
-  <header class="topbar">
+  <canvas id="network" aria-hidden="true"></canvas>
+
+  <header class="topbar" id="topbar">
     <div class="container topbar-inner">
-      <a class="brand" href="#top">David Moya</a>
+      <a class="brand" href="#top">DM<span>.</span></a>
       <nav class="nav" aria-label="Main">
+        <a href="#about"><span lang="es">Sobre mí</span><span lang="en">About</span></a>
+        <a href="#skills"><span lang="es">Competencias</span><span lang="en">Skills</span></a>
         <a href="#projects"><span lang="es">Proyectos</span><span lang="en">Projects</span></a>
         <a href="#experience"><span lang="es">Experiencia</span><span lang="en">Experience</span></a>
-        <a href="#skills"><span lang="es">Competencias</span><span lang="en">Skills</span></a>
         <a href="#contact"><span lang="es">Contacto</span><span lang="en">Contact</span></a>
       </nav>
-      <div class="toggles">
-        <button class="toggle" id="lang-toggle" type="button" aria-label="Cambiar idioma / Change language">
-          <span lang="es">EN</span><span lang="en">ES</span>
-        </button>
-        <button class="toggle" id="theme-toggle" type="button" aria-label="Cambiar tema / Toggle theme">
-          <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-        </button>
-      </div>
+      <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Cambiar idioma / Change language">
+        <span class="opt" data-opt="es">ES</span><span class="opt" data-opt="en">EN</span>
+      </button>
     </div>
   </header>
 
   <main id="top">
     <!-- Hero -->
-    <section class="hero container">
-      <p class="eyebrow">Data Scientist · Madrid</p>
-      <h1>David Moya Castillo</h1>
-      <p class="lead">
-        <span lang="es">Científico de datos junior con un Máster en Ciencia de Datos e Inteligencia Artificial. Me interesa sobre todo la <strong>modelización</strong>: entender los datos, limpiarlos bien y construir modelos que se puedan explicar.</span>
-        <span lang="en">Junior data scientist with an MSc in Data Science and Artificial Intelligence. I am most interested in <strong>modelling</strong>: understanding the data, cleaning it properly and building models that can be explained.</span>
-      </p>
-      <p class="status">
-        <span class="dot" aria-hidden="true"></span>
-        <span lang="es">Buscando puesto como Data Scientist o Data Analyst</span>
-        <span lang="en">Looking for Data Scientist or Data Analyst roles</span>
-      </p>
-      <div class="cta">
-        <a class="btn btn-primary" href="#projects"><span lang="es">Ver proyectos</span><span lang="en">See projects</span></a>
-        <a class="btn" href="https://www.linkedin.com/in/david-moya07032001" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn" href="https://github.com/dmoyitacast" target="_blank" rel="noopener">GitHub</a>
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="section container">
-      <div class="section-head">
-        <h2><span lang="es">Proyectos académicos</span><span lang="en">Academic projects</span></h2>
-        <p class="muted">
-          <span lang="es">Trabajos del Máster en Ciencia de Datos e Inteligencia Artificial (MCDIA) · Afi Escuela · 2025-26. Cada uno tiene su repositorio con el código, los resultados y un README en inglés y español.</span>
-          <span lang="en">Assignments from the MSc in Data Science and Artificial Intelligence (MCDIA) · Afi Escuela · 2025-26. Each one has its own repository with code, results and a README in English and Spanish.</span>
+    <section class="hero">
+      <div class="container hero-inner">
+        <h1 class="name">David Moya Castillo</h1>
+        <p class="role" aria-live="polite"><span class="typed" id="typed"></span><span class="caret" aria-hidden="true"></span></p>
+        <p class="tagline">
+          <span lang="es">Entender los datos antes de modelarlos.</span>
+          <span lang="en">Understand the data before modelling it.</span>
         </p>
+        <a class="hero-mail" href="mailto:dmoyacastillo7@gmail.com">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+          dmoyacastillo7@gmail.com
+        </a>
+        <ul class="chips">
+          <li class="chip">
+            <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+            Madrid
+          </li>
+          <li class="chip chip-green">
+            <span class="pulse" aria-hidden="true"></span>
+            <span lang="es">Abierto a oportunidades</span><span lang="en">Open to opportunities</span>
+          </li>
+          <li class="chip chip-violet">
+            <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+            <span lang="es">Español · Portugués · Inglés</span><span lang="en">Spanish · Portuguese · English</span>
+          </li>
+        </ul>
+        <div class="cta">
+          <a class="btn btn-primary" href="#projects"><span lang="es">Ver proyectos</span><span lang="en">View projects</span></a>
+          <a class="btn btn-ghost" href="#contact"><span lang="es">Contactar</span><span lang="en">Get in touch</span></a>
+        </div>
+        <div class="socials">
+          <a href="https://github.com/dmoyitacast" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/david-moya07032001" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          </a>
+        </div>
       </div>
-
-      <div class="grid">
-        <article class="card">
-          <div class="thumb"><img src="assets/img/regression.png" alt="Correlation matrix" loading="lazy"></div>
-          <div class="card-body">
-            <p class="kicker">Basic Regression</p>
-            <h3><span lang="es">¿Qué explica el PIB per cápita de un país?</span><span lang="en">What drives a country's GDP per capita?</span></h3>
-            <p>
-              <span lang="es">Regresión lineal múltiple sobre 227 países: imputación por región, transformaciones logarítmicas, Best Subset Selection, diagnóstico de outliers y comprobación de hipótesis.</span>
-              <span lang="en">Multiple linear regression on 227 countries: regional imputation, log transforms, Best Subset Selection, outlier diagnostics and assumption checks.</span>
-            </p>
-            <p class="metric"><span lang="es">R² ajustado</span><span lang="en">Adjusted R²</span> <strong>0.824</strong></p>
-            <ul class="tags"><li>Python</li><li>statsmodels</li><li>OLS</li></ul>
-            <div class="links"><a href="https://github.com/dmoyitacast/mcdia_basic_regression" target="_blank" rel="noopener"><span lang="es">Repositorio</span><span lang="en">Repository</span></a></div>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="thumb"><img src="assets/img/unsupervised.png" alt="Word cloud of the space cluster" loading="lazy"></div>
-          <div class="card-body">
-            <p class="kicker">Unsupervised Learning</p>
-            <h3><span lang="es">Descubriendo temáticas en 3.000 documentos</span><span lang="en">Discovering topics in 3,000 documents</span></h3>
-            <p>
-              <span lang="es">TF-IDF calculado desde cero, filtrado por transition point, PCA y K-Means. Encuentra 4 temas muy limpios: religión, tecnología, espacio y deportes.</span>
-              <span lang="en">TF-IDF computed from scratch, transition-point filtering, PCA and K-Means. It finds 4 clean topics: religion, technology, space and sports.</span>
-            </p>
-            <p class="metric"><span lang="es">Dimensiones</span><span lang="en">Dimensions</span> <strong><span lang="es">20.529 → 330</span><span lang="en">20,529 → 330</span></strong></p>
-            <ul class="tags"><li>Python</li><li>scikit-learn</li><li>Plotly</li><li>NLP</li></ul>
-            <div class="links">
-              <a href="https://github.com/dmoyitacast/mcdia_unsupervised_learning" target="_blank" rel="noopener"><span lang="es">Repositorio</span><span lang="en">Repository</span></a>
-              <a href="https://nbviewer.org/github/dmoyitacast/mcdia_unsupervised_learning/blob/main/code/unsupervised_learning_david_moya.ipynb" target="_blank" rel="noopener"><span lang="es">Gráficos interactivos</span><span lang="en">Interactive charts</span></a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="thumb"><img src="assets/img/kernel.png" alt="Decision boundaries of my SVC vs scikit-learn" loading="lazy"></div>
-          <div class="card-body">
-            <p class="kicker">Kernel Methods &amp; Neural Networks</p>
-            <h3><span lang="es">kNN, SVC y MLP desde cero</span><span lang="en">kNN, SVC and MLP from scratch</span></h3>
-            <p>
-              <span lang="es">Implementación con NumPy de k-vecinos, un SVC con kernel RBF entrenado con SMO y un perceptrón multicapa con backpropagation, validados frente a scikit-learn.</span>
-              <span lang="en">NumPy implementations of k-nearest neighbours, an RBF-kernel SVC trained with SMO and a multilayer perceptron with backpropagation, validated against scikit-learn.</span>
-            </p>
-            <p class="metric"><span lang="es">R² del MLP propio</span><span lang="en">Own MLP R²</span> <strong>0.993</strong></p>
-            <ul class="tags"><li>Python</li><li>NumPy</li><li>SVM</li><li>MLP</li></ul>
-            <div class="links"><a href="https://github.com/dmoyitacast/mcdia_kernel_methods_neural_networks" target="_blank" rel="noopener"><span lang="es">Repositorio</span><span lang="en">Repository</span></a></div>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="thumb"><img src="assets/img/timeseries.png" alt="Boeing price forecast vs actual" loading="lazy"></div>
-          <div class="card-body">
-            <p class="kicker">Time Series</p>
-            <h3><span lang="es">Precio y volatilidad de Boeing</span><span lang="en">Boeing stock price and volatility</span></h3>
-            <p>
-              <span lang="es">ARIMA para la media y eGARCH para la volatilidad, con contrastes formales (ADF, Ljung-Box, ARCH) y predicción a 5 días mediante 1.000 simulaciones Monte Carlo.</span>
-              <span lang="en">ARIMA for the mean and eGARCH for volatility, with formal tests (ADF, Ljung-Box, ARCH) and a 5-day forecast from 1,000 Monte Carlo simulations.</span>
-            </p>
-            <p class="metric"><span lang="es">Valores reales dentro del IC 95%</span><span lang="en">Actual values inside 95% CI</span> <strong>5 / 5</strong></p>
-            <ul class="tags"><li>R</li><li>rugarch</li><li>ARIMA</li><li>GARCH</li></ul>
-            <div class="links">
-              <a href="https://github.com/dmoyitacast/mcdia_time_series" target="_blank" rel="noopener"><span lang="es">Repositorio</span><span lang="en">Repository</span></a>
-              <a href="https://dmoyitacast.github.io/mcdia_time_series/boeing_time_series.html" target="_blank" rel="noopener"><span lang="es">Informe completo</span><span lang="en">Full report</span></a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="thumb"><img src="assets/img/reinforcement.gif" alt="Trained PPO agent walking" loading="lazy"></div>
-          <div class="card-body">
-            <p class="kicker">Reinforcement Learning</p>
-            <h3><span lang="es">Enseñando a un robot a caminar</span><span lang="en">Teaching a robot to walk</span></h3>
-            <p>
-              <span lang="es">PPO en BipedalWalker-v3 comparando cuatro configuraciones. Clave: un pequeño incentivo a la exploración (entropía). Trabajo en grupo con Said Daniel Huarita Mollo.</span>
-              <span lang="en">PPO on BipedalWalker-v3 comparing four configurations. Key: a small exploration bonus (entropy). Group work with Said Daniel Huarita Mollo.</span>
-            </p>
-            <p class="metric"><span lang="es">Recompensa (resuelto ≥ 300)</span><span lang="en">Reward (solved ≥ 300)</span> <strong>300.5 ± 1.0</strong></p>
-            <ul class="tags"><li>Python</li><li>Stable-Baselines3</li><li>Gymnasium</li></ul>
-            <div class="links"><a href="https://github.com/dmoyitacast/mcdia_reinforcement_learning" target="_blank" rel="noopener"><span lang="es">Repositorio</span><span lang="en">Repository</span></a></div>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="thumb"><img src="assets/img/deeplearning.png" alt="Test accuracy by model" loading="lazy"></div>
-          <div class="card-body">
-            <p class="kicker">Deep Learning</p>
-            <h3><span lang="es">Clasificación de imágenes de comida</span><span lang="en">Food image classification</span></h3>
-            <p>
-              <span lang="es">Cuatro CNNs diseñadas desde cero frente a transfer learning con VGG16 (incluido fine-tuning) y MobileNetV2. Trabajo en grupo con Said Daniel Huarita Mollo.</span>
-              <span lang="en">Four CNNs designed from scratch vs transfer learning with VGG16 (including fine-tuning) and MobileNetV2. Group work with Said Daniel Huarita Mollo.</span>
-            </p>
-            <p class="metric"><span lang="es">Accuracy en test</span><span lang="en">Test accuracy</span> <strong>85.0%</strong></p>
-            <ul class="tags"><li>Python</li><li>TensorFlow</li><li>Keras</li><li>CNN</li></ul>
-            <div class="links">
-              <a href="https://github.com/dmoyitacast/mcdia_deep_learning" target="_blank" rel="noopener"><span lang="es">Repositorio</span><span lang="en">Repository</span></a>
-              <a href="https://colab.research.google.com/github/dmoyitacast/mcdia_deep_learning/blob/main/food_classification_cnn.ipynb" target="_blank" rel="noopener"><span lang="es">Abrir en Colab</span><span lang="en">Open in Colab</span></a>
-            </div>
-          </div>
-        </article>
-      </div>
+      <a class="scroll-hint" href="#about" aria-label="Scroll"><span></span></a>
     </section>
 
-    <!-- Experience & education -->
-    <section id="experience" class="section container two-col">
-      <div>
-        <h2><span lang="es">Experiencia</span><span lang="en">Experience</span></h2>
-        <ol class="timeline">
-          <li>
-            <p class="when"><span lang="es">Mar 2026 – Jun 2026</span><span lang="en">Mar 2026 – Jun 2026</span></p>
-            <h3>Data Scientist – ESG &amp; Carbon Intelligence <span class="muted">(<span lang="es">beca</span><span lang="en">internship</span>)</span></h3>
-            <p class="org">Analistas Financieros Internacionales (Afi)</p>
-            <ul>
-              <li><span lang="es">Pipelines ETL para integrar y transformar datos empresariales destinados a estimar emisiones de GEI (alcances 1, 2 y 3).</span><span lang="en">ETL pipelines to integrate and transform company data for estimating GHG emissions (scopes 1, 2 and 3).</span></li>
-              <li><span lang="es">Modelos predictivos (XGBoost, SVR…) evaluados con validación cruzada e interpretados con SHAP.</span><span lang="en">Predictive models (XGBoost, SVR…) evaluated with cross-validation and interpreted with SHAP.</span></li>
-            </ul>
-          </li>
-          <li>
-            <p class="when"><span lang="es">Feb 2025 – May 2025</span><span lang="en">Feb 2025 – May 2025</span></p>
-            <h3>Fraud Analysis &amp; Risk Management Intern</h3>
-            <p class="org">BNP Paribas – Cetelem</p>
-            <ul>
-              <li><span lang="es">Análisis de grandes volúmenes de datos transaccionales para identificar patrones de fraude y anomalías.</span><span lang="en">Analysis of large volumes of transaction data to identify fraud patterns and anomalies.</span></li>
-              <li><span lang="es">Evaluación de actividades sospechosas con herramientas de detección de fraude (Instinct, FraudNet).</span><span lang="en">Assessment of suspicious activity with fraud detection tools (Instinct, FraudNet).</span></li>
-            </ul>
-          </li>
-        </ol>
-      </div>
-      <div>
-        <h2><span lang="es">Formación</span><span lang="en">Education</span></h2>
-        <ol class="timeline">
-          <li>
-            <p class="when">2025 – 2026</p>
-            <h3><span lang="es">Máster en Ciencia de Datos e Inteligencia Artificial</span><span lang="en">MSc in Data Science and Artificial Intelligence</span></h3>
-            <p class="org">Afi Escuela (Afi Global Education)</p>
-          </li>
-          <li>
-            <p class="when">2019 – 2025</p>
-            <h3><span lang="es">Grado en Administración y Dirección de Empresas</span><span lang="en">BSc in Business Administration and Management</span></h3>
-            <p class="org">Universidad Complutense de Madrid</p>
-          </li>
-        </ol>
-        <h2 class="mt"><span lang="es">Idiomas</span><span lang="en">Languages</span></h2>
-        <ul class="plain">
-          <li><span lang="es">Español · nativo</span><span lang="en">Spanish · native</span></li>
-          <li><span lang="es">Portugués · nativo</span><span lang="en">Portuguese · native</span></li>
-          <li><span lang="es">Inglés · nivel alto (Cambridge First Certificate, B2)</span><span lang="en">English · advanced (Cambridge First Certificate, B2)</span></li>
-        </ul>
+    <!-- About -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="section-title reveal"><span class="num">01.</span> <span lang="es">Sobre mí</span><span lang="en">About me</span></h2>
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p>
+              <span lang="es">Soy científico de datos junior en Madrid. Vengo de <strong>Administración y Dirección de Empresas</strong> (Universidad Complutense) y di el salto a los datos con el <strong>Máster en Ciencia de Datos e Inteligencia Artificial</strong> de Afi Escuela.</span>
+              <span lang="en">I am a junior data scientist based in Madrid. I studied <strong>Business Administration</strong> (Universidad Complutense de Madrid) and moved into data with the <strong>MSc in Data Science and Artificial Intelligence</strong> at Afi Escuela.</span>
+            </p>
+            <p>
+              <span lang="es">Lo que más me gusta es la <strong>modelización</strong>: entender bien los datos, limpiarlos con cuidado y construir modelos que se puedan explicar, no solo que funcionen. También trabajo con IA generativa: LLMs, RAG y agentes.</span>
+              <span lang="en">What I enjoy most is <strong>modelling</strong>: understanding the data well, cleaning it carefully and building models that can be explained, not just models that work. I also work with generative AI: LLMs, RAG and agents.</span>
+            </p>
+            <p>
+              <span lang="es">He hecho prácticas como <strong>Data Scientist en Afi</strong> (ESG y huella de carbono) y en <strong>análisis de fraude en BNP Paribas – Cetelem</strong>. Busco un puesto como <strong>Data Scientist o Data Analyst</strong>.</span>
+              <span lang="en">I have interned as a <strong>Data Scientist at Afi</strong> (ESG and carbon footprint) and in <strong>fraud analysis at BNP Paribas – Cetelem</strong>. I am looking for a <strong>Data Scientist or Data Analyst</strong> role.</span>
+            </p>
+          </div>
+          <ul class="stats reveal">
+            <li><strong class="counter" data-target="6">0</strong><span lang="es">proyectos publicados</span><span lang="en">published projects</span></li>
+            <li><strong class="counter" data-target="2">0</strong><span lang="es">prácticas en empresa</span><span lang="en">internships</span></li>
+            <li><strong class="counter" data-target="3">0</strong><span lang="es">idiomas</span><span lang="en">languages</span></li>
+            <li><strong class="counter" data-target="85" data-suffix="%">0</strong><span lang="es">accuracy en mi mejor CNN</span><span lang="en">accuracy, best CNN</span></li>
+          </ul>
+        </div>
       </div>
     </section>
 
     <!-- Skills -->
-    <section id="skills" class="section container">
-      <h2><span lang="es">Competencias técnicas</span><span lang="en">Technical skills</span></h2>
-      <div class="skills">
-        <div class="skill-group">
-          <h3><span lang="es">Programación y datos</span><span lang="en">Programming &amp; data</span></h3>
-          <ul class="tags"><li>Python</li><li>R</li><li>SQL</li><li>NoSQL</li><li>PySpark</li><li>REST APIs</li></ul>
+    <section id="skills" class="section">
+      <div class="container">
+        <h2 class="section-title reveal"><span class="num">02.</span> <span lang="es">Competencias técnicas</span><span lang="en">Technical skills</span></h2>
+        <div class="skills">
+          <div class="skill-card reveal">
+            <div class="skill-icon"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3><span lang="es">Programación y datos</span><span lang="en">Programming &amp; data</span></h3>
+            <ul class="tags"><li>Python</li><li>R</li><li>SQL</li><li>NoSQL</li><li>PySpark</li><li>REST APIs</li></ul>
+          </div>
+          <div class="skill-card reveal">
+            <div class="skill-icon"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M3 20h18M6 16l4-5 3 3 5-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3>Machine Learning</h3>
+            <ul class="tags">
+              <li><span lang="es">Regresión</span><span lang="en">Regression</span></li>
+              <li><span lang="es">Series temporales</span><span lang="en">Time series</span></li>
+              <li><span lang="es">Ensamblado</span><span lang="en">Ensembles</span></li>
+              <li>Clustering</li><li>XGBoost</li><li>SHAP</li>
+            </ul>
+          </div>
+          <div class="skill-card reveal">
+            <div class="skill-icon"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="5" cy="6" r="2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="5" cy="18" r="2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="19" cy="6" r="2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="19" cy="18" r="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m7 7 3.4 3.6M7 17l3.4-3.6M13.6 10.4 17 7M13.6 13.6 17 17" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></div>
+            <h3>Deep Learning &amp; RL</h3>
+            <ul class="tags"><li>TensorFlow</li><li>Keras</li><li>CNN</li><li>Transfer learning</li><li>PPO</li></ul>
+          </div>
+          <div class="skill-card reveal">
+            <div class="skill-icon"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9L12 3zM19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9L19 15z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+            <h3><span lang="es">IA generativa y LLMs</span><span lang="en">Generative AI &amp; LLMs</span></h3>
+            <ul class="tags"><li>OpenAI API</li><li>LangChain</li><li>RAG</li><li>Embeddings</li><li>Prompt Engineering</li></ul>
+          </div>
+          <div class="skill-card reveal">
+            <div class="skill-icon"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7 17v-4M12 17V8M17 17v-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+            <h3><span lang="es">Visualización</span><span lang="en">Visualisation</span></h3>
+            <ul class="tags"><li>Tableau</li><li>Streamlit</li><li>Plotly</li><li>Matplotlib</li><li>ggplot2</li></ul>
+          </div>
+          <div class="skill-card reveal">
+            <div class="skill-icon"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3>DevOps</h3>
+            <ul class="tags"><li>Git / GitHub</li><li>Docker</li><li>Jupyter</li><li>Google Colab</li></ul>
+          </div>
         </div>
-        <div class="skill-group">
-          <h3>Machine Learning</h3>
-          <ul class="tags">
-            <li><span lang="es">Regresión</span><span lang="en">Regression</span></li>
-            <li><span lang="es">Series temporales</span><span lang="en">Time series</span></li>
-            <li><span lang="es">Métodos de ensamblado</span><span lang="en">Ensemble methods</span></li>
-            <li>Clustering</li><li>Deep Learning</li><li>Reinforcement Learning</li>
-          </ul>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section">
+      <div class="container">
+        <h2 class="section-title reveal"><span class="num">03.</span> <span lang="es">Proyectos académicos</span><span lang="en">Academic projects</span></h2>
+        <p class="section-sub reveal">
+          <span lang="es">Trabajos del Máster en Ciencia de Datos e IA (Afi Escuela, 2025-26). Cada uno tiene su repositorio con código, resultados y README en inglés y español.</span>
+          <span lang="en">Assignments from the MSc in Data Science and AI (Afi Escuela, 2025-26). Each one has its own repository with code, results and a README in English and Spanish.</span>
+        </p>
+        <div class="filters reveal" role="group" aria-label="Filter">
+          <button class="filter active" data-filter="all"><span lang="es">Todos</span><span lang="en">All</span></button>
+          <button class="filter" data-filter="ml">Machine Learning</button>
+          <button class="filter" data-filter="stats"><span lang="es">Estadística y series temporales</span><span lang="en">Statistics &amp; time series</span></button>
+          <button class="filter" data-filter="dl">Deep Learning &amp; RL</button>
         </div>
-        <div class="skill-group">
-          <h3><span lang="es">IA generativa y LLMs</span><span lang="en">Generative AI &amp; LLMs</span></h3>
-          <ul class="tags"><li>OpenAI API</li><li>Prompt Engineering</li><li>LangChain</li><li>RAG</li><li>Embeddings</li></ul>
+
+        <div class="grid">
+          <article class="card reveal" data-cat="dl">
+            <div class="thumb"><img src="assets/img/reinforcement.gif" alt="Trained PPO agent walking" loading="lazy"></div>
+            <div class="card-body">
+              <p class="kicker">Reinforcement Learning</p>
+              <h3><span lang="es">Enseñando a un robot a caminar</span><span lang="en">Teaching a robot to walk</span></h3>
+              <p class="desc">
+                <span lang="es">PPO en BipedalWalker-v3 comparando cuatro configuraciones. La clave fue un pequeño incentivo a la exploración (entropía). En grupo con Said Daniel Huarita Mollo.</span>
+                <span lang="en">PPO on BipedalWalker-v3 comparing four configurations. The key was a small exploration bonus (entropy). Group work with Said Daniel Huarita Mollo.</span>
+              </p>
+              <p class="metric"><span lang="es">Recompensa (resuelto ≥ 300)</span><span lang="en">Reward (solved ≥ 300)</span> <strong>300.5 ± 1.0</strong></p>
+              <ul class="tags"><li>Python</li><li>Stable-Baselines3</li><li>Gymnasium</li></ul>
+              <div class="links"><a href="https://github.com/dmoyitacast/mcdia_reinforcement_learning" target="_blank" rel="noopener"><span lang="es">Repositorio</span><span lang="en">Repository</span> →</a></div>
+            </div>
+          </article>
+
+          <article class="card reveal" data-cat="dl">
+            <div class="thumb"><img src="assets/img/deeplearning.png" alt="Test accuracy by model" loading="lazy"></div>
+            <div class="card-body">
+              <p class="kicker">Deep Learning</p>
+              <h3><span lang="es">Clasificación de imágenes de comida</span><span lang="en">Food image classification</span></h3>
+              <p class="desc">
+                <span lang="es">Cuatro CNNs diseñadas desde cero frente a transfer learning con VGG16 (con fine-tuning) y MobileNetV2. En grupo con Said Daniel Huarita Mollo.</span>
+                <span lang="en">Four CNNs designed from scratch vs transfer learning with VGG16 (with fine-tuning) and MobileNetV2. Group work with Said Daniel Huarita Mollo.</span>
+              </p>
+              <p class="metric"><span lang="es">Accuracy en test</span><span lang="en">Test accuracy</span> <strong>85.0%</strong></p>
+              <ul class="tags"><li>Python</li><li>TensorFlow</li><li>Keras</li><li>CNN</li></ul>
+              <div class="links">
+                <a href="https://github.com/dmoyitacast/mcdia_deep_learning" target="_blank" rel="noopener"><span lang="es">Repositorio</span><span lang="en">Repository</span> →</a>
+                <a href="https://colab.research.google.com/github/dmoyitacast/mcdia_deep_learning/blob/main/food_classification_cnn.ipynb" target="_blank" rel="noopener"><span lang="es">Abrir en Colab</span><span lang="en">Open in Colab</span> →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card reveal" data-cat="stats">
+            <div class="thumb"><img src="assets/img/timeseries.png" alt="Boeing price forecast vs actual" loading="lazy"></div>
+            <div class="card-body">
+              <p class="kicker">Time Series</p>
+              <h3><span lang="es">Precio y volatilidad de Boeing</span><span lang="en">Boeing stock price and volatility</span></h3>
+              <p class="desc">
+                <span lang="es">ARIMA para la media y eGARCH para la volatilidad, con contrastes formales y predicción a 5 días mediante 1.000 simulaciones Monte Carlo.</span>
+                <span lang="en">ARIMA for the mean and eGARCH for volatility, with formal tests and a 5-day forecast from 1,000 Monte Carlo simulations.</span>
+              </p>
+              <p class="metric"><span lang="es">Reales dentro del IC 95%</span><span lang="en">Actuals inside 95% CI</span> <strong>5 / 5</strong></p>
+              <ul class="tags"><li>R</li><li>rugarch</li><li>ARIMA</li><li>GARCH</li></ul>
+              <div class="links">
+                <a href="https://github.com/dmoyitacast/mcdia_time_series" target="_blank" rel="noopener"><span lang="es">Repositorio</span><span lang="en">Repository</span> →</a>
+                <a href="https://dmoyitacast.github.io/mcdia_time_series/boeing_time_series.html" target="_blank" rel="noopener"><span lang="es">Informe</span><span lang="en">Report</span> →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card reveal" data-cat="ml">
+            <div class="thumb"><img src="assets/img/kernel.png" alt="Decision boundaries of my SVC vs scikit-learn" loading="lazy"></div>
+            <div class="card-body">
+              <p class="kicker">Kernel Methods &amp; Neural Networks</p>
+              <h3><span lang="es">kNN, SVC y MLP desde cero</span><span lang="en">kNN, SVC and MLP from scratch</span></h3>
+              <p class="desc">
+                <span lang="es">Implementación con NumPy de k-vecinos, un SVC con kernel RBF entrenado con SMO y un perceptrón multicapa con backpropagation, validados frente a scikit-learn.</span>
+                <span lang="en">NumPy implementations of k-nearest neighbours, an RBF-kernel SVC trained with SMO and a multilayer perceptron with backpropagation, validated against scikit-learn.</span>
+              </p>
+              <p class="metric"><span lang="es">R² del MLP propio</span><span lang="en">Own MLP R²</span> <strong>0.993</strong></p>
+              <ul class="tags"><li>Python</li><li>NumPy</li><li>SVM</li><li>MLP</li></ul>
+              <div class="links"><a href="https://github.com/dmoyitacast/mcdia_kernel_methods_neural_networks" target="_blank" rel="noopener"><span lang="es">Repositorio</span><span lang="en">Repository</span> →</a></div>
+            </div>
+          </article>
+
+          <article class="card reveal" data-cat="ml">
+            <div class="thumb"><img src="assets/img/unsupervised.png" alt="Word cloud of the space cluster" loading="lazy"></div>
+            <div class="card-body">
+              <p class="kicker">Unsupervised Learning</p>
+              <h3><span lang="es">Descubriendo temáticas en 3.000 documentos</span><span lang="en">Discovering topics in 3,000 documents</span></h3>
+              <p class="desc">
+                <span lang="es">TF-IDF calculado desde cero, filtrado por transition point, PCA y K-Means. Encuentra 4 temas muy limpios: religión, tecnología, espacio y deportes.</span>
+                <span lang="en">TF-IDF computed from scratch, transition-point filtering, PCA and K-Means. It finds 4 clean topics: religion, technology, space and sports.</span>
+              </p>
+              <p class="metric"><span lang="es">Dimensiones</span><span lang="en">Dimensions</span> <strong><span lang="es">20.529 → 330</span><span lang="en">20,529 → 330</span></strong></p>
+              <ul class="tags"><li>Python</li><li>scikit-learn</li><li>Plotly</li><li>NLP</li></ul>
+              <div class="links">
+                <a href="https://github.com/dmoyitacast/mcdia_unsupervised_learning" target="_blank" rel="noopener"><span lang="es">Repositorio</span><span lang="en">Repository</span> →</a>
+                <a href="https://nbviewer.org/github/dmoyitacast/mcdia_unsupervised_learning/blob/main/code/unsupervised_learning_david_moya.ipynb" target="_blank" rel="noopener"><span lang="es">Gráficos interactivos</span><span lang="en">Interactive charts</span> →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card reveal" data-cat="stats">
+            <div class="thumb"><img src="assets/img/regression.png" alt="Correlation matrix" loading="lazy"></div>
+            <div class="card-body">
+              <p class="kicker">Basic Regression</p>
+              <h3><span lang="es">¿Qué explica el PIB per cápita de un país?</span><span lang="en">What drives a country's GDP per capita?</span></h3>
+              <p class="desc">
+                <span lang="es">Regresión lineal múltiple sobre 227 países: imputación por región, transformaciones logarítmicas, Best Subset Selection, diagnóstico de outliers y comprobación de hipótesis.</span>
+                <span lang="en">Multiple linear regression on 227 countries: regional imputation, log transforms, Best Subset Selection, outlier diagnostics and assumption checks.</span>
+              </p>
+              <p class="metric"><span lang="es">R² ajustado</span><span lang="en">Adjusted R²</span> <strong>0.824</strong></p>
+              <ul class="tags"><li>Python</li><li>statsmodels</li><li>OLS</li></ul>
+              <div class="links"><a href="https://github.com/dmoyitacast/mcdia_basic_regression" target="_blank" rel="noopener"><span lang="es">Repositorio</span><span lang="en">Repository</span> →</a></div>
+            </div>
+          </article>
         </div>
-        <div class="skill-group">
-          <h3><span lang="es">Visualización y herramientas</span><span lang="en">Visualisation &amp; tools</span></h3>
-          <ul class="tags"><li>Tableau</li><li>Streamlit</li><li>Plotly</li><li>Git / GitHub</li><li>Docker</li></ul>
+      </div>
+    </section>
+
+    <!-- Experience & education -->
+    <section id="experience" class="section">
+      <div class="container">
+        <h2 class="section-title reveal"><span class="num">04.</span> <span lang="es">Experiencia y formación</span><span lang="en">Experience &amp; education</span></h2>
+        <div class="two-col">
+          <ol class="timeline">
+            <li class="reveal">
+              <p class="when">Mar 2026 – Jun 2026</p>
+              <h3>Data Scientist – ESG &amp; Carbon Intelligence</h3>
+              <p class="org">Analistas Financieros Internacionales (Afi) · <span lang="es">Beca</span><span lang="en">Internship</span></p>
+              <ul>
+                <li><span lang="es">Pipelines ETL para integrar y transformar datos empresariales destinados a estimar emisiones de GEI (alcances 1, 2 y 3).</span><span lang="en">ETL pipelines to integrate and transform company data for estimating GHG emissions (scopes 1, 2 and 3).</span></li>
+                <li><span lang="es">Modelos predictivos (XGBoost, SVR…) evaluados con validación cruzada e interpretados con SHAP.</span><span lang="en">Predictive models (XGBoost, SVR…) evaluated with cross-validation and interpreted with SHAP.</span></li>
+              </ul>
+            </li>
+            <li class="reveal">
+              <p class="when"><span lang="es">Feb 2025 – May 2025</span><span lang="en">Feb 2025 – May 2025</span></p>
+              <h3>Fraud Analysis &amp; Risk Management Intern</h3>
+              <p class="org">BNP Paribas – Cetelem</p>
+              <ul>
+                <li><span lang="es">Análisis de grandes volúmenes de datos transaccionales para identificar patrones de fraude y anomalías.</span><span lang="en">Analysis of large volumes of transaction data to identify fraud patterns and anomalies.</span></li>
+                <li><span lang="es">Evaluación de actividades sospechosas con herramientas de detección de fraude (Instinct, FraudNet).</span><span lang="en">Assessment of suspicious activity with fraud detection tools (Instinct, FraudNet).</span></li>
+              </ul>
+            </li>
+          </ol>
+          <ol class="timeline">
+            <li class="reveal edu">
+              <p class="when">2025 – 2026</p>
+              <h3><span lang="es">Máster en Ciencia de Datos e Inteligencia Artificial</span><span lang="en">MSc in Data Science and Artificial Intelligence</span></h3>
+              <p class="org">Afi Escuela (Afi Global Education)</p>
+            </li>
+            <li class="reveal edu">
+              <p class="when">2019 – 2025</p>
+              <h3><span lang="es">Grado en Administración y Dirección de Empresas</span><span lang="en">BSc in Business Administration and Management</span></h3>
+              <p class="org">Universidad Complutense de Madrid</p>
+            </li>
+            <li class="reveal edu">
+              <p class="when"><span lang="es">Certificación</span><span lang="en">Certification</span></p>
+              <h3>Cambridge First Certificate in English (B2)</h3>
+              <p class="org">Cambridge English</p>
+            </li>
+          </ol>
         </div>
       </div>
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="section container contact">
-      <h2><span lang="es">Contacto</span><span lang="en">Contact</span></h2>
-      <p class="muted">
-        <span lang="es">Si buscas a alguien para un puesto de datos, estaré encantado de hablar.</span>
-        <span lang="en">If you are hiring for a data role, I would be happy to talk.</span>
-      </p>
-      <div class="cta">
-        <a class="btn btn-primary" href="mailto:dmoyacastillo7@gmail.com">dmoyacastillo7@gmail.com</a>
-        <a class="btn" href="https://www.linkedin.com/in/david-moya07032001" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn" href="https://github.com/dmoyitacast" target="_blank" rel="noopener">GitHub</a>
+    <section id="contact" class="section contact">
+      <div class="container">
+        <div class="contact-box reveal">
+          <h2 class="section-title center"><span class="num">05.</span> <span lang="es">Contacto</span><span lang="en">Contact</span></h2>
+          <p>
+            <span lang="es">Si buscas a alguien para un puesto de datos, o quieres comentar alguno de estos proyectos, escríbeme.</span>
+            <span lang="en">If you are hiring for a data role, or want to talk about any of these projects, get in touch.</span>
+          </p>
+          <div class="cta center">
+            <a class="btn btn-primary" href="mailto:dmoyacastillo7@gmail.com"><span lang="es">Escríbeme</span><span lang="en">Email me</span></a>
+            <a class="btn btn-ghost" href="https://www.linkedin.com/in/david-moya07032001" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn btn-ghost" href="https://github.com/dmoyitacast" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="container">© 2026 David Moya Castillo · Madrid</div>
+    <div class="container">
+      <span>© 2026 David Moya Castillo · Madrid</span>
+      <span class="muted"><span lang="es">Hecho a mano con HTML, CSS y JavaScript</span><span lang="en">Hand-built with HTML, CSS and JavaScript</span></span>
+    </div>
   </footer>
 
   <script src="script.js"></script>
