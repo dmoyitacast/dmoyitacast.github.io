@@ -94,11 +94,7 @@ html[data-lang="en"] .lang-toggle [data-opt="en"] { background: var(--blue-stron
   border: 1px solid var(--border); border-radius: 999px; background: rgba(17, 25, 52, .55);
   color: var(--muted); font-size: 13px; font-weight: 500; backdrop-filter: blur(6px);
 }
-.chip-green { color: var(--green); border-color: rgba(74, 222, 128, .3); }
 .chip-violet { color: var(--violet); border-color: rgba(167, 139, 250, .3); }
-.pulse { position: relative; width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
-.pulse::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--green); animation: pulse 1.8s ease-out infinite; }
-@keyframes pulse { to { transform: scale(2.8); opacity: 0; } }
 
 .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
 .cta.center { justify-content: center; }
@@ -256,6 +252,6 @@ html[data-lang="en"] .lang-toggle [data-opt="en"] { background: var(--blue-stron
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
-  .caret, .pulse::after, .scroll-hint span { animation: none; }
+  .caret, .scroll-hint span { animation: none; }
   .card, .card:hover, .btn:hover, .skill-card:hover { transform: none; }
 }
