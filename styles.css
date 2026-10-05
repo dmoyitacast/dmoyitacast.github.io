@@ -179,6 +179,20 @@ html[data-lang="en"] .lang-toggle [data-opt="en"] { background: var(--blue-stron
 .thumb { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #f4f6fb; }
 .thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 10px; transition: transform .4s ease; }
 .card:hover .thumb img { transform: scale(1.04); }
+.badges { position: absolute; top: 12px; left: 12px; z-index: 2; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  padding: 4px 10px; border-radius: 999px; font: 700 11px/1.2 var(--mono); letter-spacing: .04em; text-transform: uppercase;
+  color: #fff; background: rgba(6, 10, 26, .82); border: 1px solid rgba(255, 255, 255, .14); backdrop-filter: blur(6px);
+}
+.badge-client { background: rgba(5, 150, 105, .9); border-color: rgba(110, 231, 183, .5); }
+.badge-personal { background: rgba(124, 58, 237, .9); border-color: rgba(196, 181, 253, .5); }
+.badge-academic { background: rgba(37, 99, 235, .9); border-color: rgba(147, 197, 253, .5); }
+.badge-progress { background: rgba(217, 119, 6, .92); border-color: rgba(253, 211, 77, .55); }
+.thumb.no-image { background: linear-gradient(135deg, #16204a 0%, #1e1b4b 55%, #2e1065 100%); }
+.placeholder {
+  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+  color: rgba(165, 180, 252, .85); font: 700 13px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase;
+}
 .card-body { position: relative; z-index: 1; display: flex; flex-direction: column; flex: 1; padding: 20px 22px 22px; }
 .kicker { margin: 0 0 6px; font: 400 11.5px/1.4 var(--mono); color: var(--violet); text-transform: uppercase; letter-spacing: .08em; }
 .card h3 { margin: 0 0 10px; font-size: 18px; line-height: 1.35; letter-spacing: -.01em; }

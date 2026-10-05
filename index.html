@@ -101,7 +101,7 @@
             </p>
           </div>
           <ul class="stats reveal">
-            <li><strong class="counter" data-target="6">0</strong><span lang="es">proyectos publicados</span><span lang="en">published projects</span></li>
+            <li><strong class="counter" id="projects-count" data-target="6">0</strong><span lang="es">proyectos publicados</span><span lang="en">published projects</span></li>
             <li><strong class="counter" data-target="2">0</strong><span lang="es">experiencias en empresa</span><span lang="en">industry experiences</span></li>
             <li><strong class="counter" data-target="3">0</strong><span lang="es">idiomas</span><span lang="en">languages</span></li>
             <li><strong class="counter" data-target="3">0</strong><span lang="es">lenguajes de programación (Python, R, SQL)</span><span lang="en">programming languages (Python, R, SQL)</span></li>
@@ -159,121 +159,17 @@
       </div>
     </section>
 
-    <!-- Projects -->
+    <!-- Projects (rendered from projects.js) -->
     <section id="projects" class="section">
       <div class="container">
-        <h2 class="section-title reveal"><span class="num">03.</span> <span lang="es">Proyectos académicos</span><span lang="en">Academic projects</span></h2>
+        <h2 class="section-title reveal"><span class="num">03.</span> <span lang="es">Proyectos</span><span lang="en">Projects</span></h2>
         <p class="section-sub reveal">
-          <span lang="es">Trabajos del Máster en Ciencia de Datos e IA (Afi Escuela, 2025-26). Cada uno tiene su repositorio con código, resultados y README en inglés y español.</span>
-          <span lang="en">Assignments from the MSc in Data Science and AI (Afi Escuela, 2025-26). Each one has its own repository with code, results and a README in English and Spanish.</span>
+          <span lang="es">Cada proyecto indica si es de cliente, personal o académico. Los académicos son del Máster en Ciencia de Datos e IA (Afi Escuela, 2025-26) y tienen repositorio con código, resultados y README en inglés y español.</span>
+          <span lang="en">Each project shows whether it is client work, personal or academic. The academic ones come from the MSc in Data Science and AI (Afi Escuela, 2025-26) and each has a repository with code, results and a README in English and Spanish.</span>
         </p>
-        <div class="filters reveal" role="group" aria-label="Filter">
-          <button class="filter active" data-filter="all"><span lang="es">Todos</span><span lang="en">All</span></button>
-          <button class="filter" data-filter="ml">Machine Learning</button>
-          <button class="filter" data-filter="stats"><span lang="es">Estadística y series temporales</span><span lang="en">Statistics &amp; time series</span></button>
-          <button class="filter" data-filter="dl">Deep Learning &amp; RL</button>
-        </div>
-
-        <div class="grid">
-          <article class="card reveal" data-cat="dl">
-            <div class="thumb"><img src="assets/img/reinforcement.gif" alt="Trained PPO agent walking" loading="lazy"></div>
-            <div class="card-body">
-              <p class="kicker">Reinforcement Learning</p>
-              <h3><span lang="es">Enseñando a un robot a caminar</span><span lang="en">Teaching a robot to walk</span></h3>
-              <p class="desc">
-                <span lang="es">PPO en BipedalWalker-v3 comparando cuatro configuraciones. La clave fue un pequeño incentivo a la exploración (entropía). En grupo con Said Daniel Huarita Mollo.</span>
-                <span lang="en">PPO on BipedalWalker-v3 comparing four configurations. The key was a small exploration bonus (entropy). Group work with Said Daniel Huarita Mollo.</span>
-              </p>
-              <p class="metric"><span lang="es">Recompensa (resuelto ≥ 300)</span><span lang="en">Reward (solved ≥ 300)</span> <strong>300.5 ± 1.0</strong></p>
-              <ul class="tags"><li>Python</li><li>Stable-Baselines3</li><li>Gymnasium</li></ul>
-              <div class="links"><a href="https://github.com/dmoyitacast/mcdia_reinforcement_learning" target="_blank" rel="noopener"><span lang="es">Repositorio</span><span lang="en">Repository</span> →</a></div>
-            </div>
-          </article>
-
-          <article class="card reveal" data-cat="dl">
-            <div class="thumb"><img src="assets/img/deeplearning.png" alt="Test accuracy by model" loading="lazy"></div>
-            <div class="card-body">
-              <p class="kicker">Deep Learning</p>
-              <h3><span lang="es">Clasificación de imágenes de comida</span><span lang="en">Food image classification</span></h3>
-              <p class="desc">
-                <span lang="es">Cuatro CNNs diseñadas desde cero frente a transfer learning con VGG16 (con fine-tuning) y MobileNetV2. En grupo con Said Daniel Huarita Mollo.</span>
-                <span lang="en">Four CNNs designed from scratch vs transfer learning with VGG16 (with fine-tuning) and MobileNetV2. Group work with Said Daniel Huarita Mollo.</span>
-              </p>
-              <p class="metric"><span lang="es">Accuracy en test</span><span lang="en">Test accuracy</span> <strong>85.0%</strong></p>
-              <ul class="tags"><li>Python</li><li>TensorFlow</li><li>Keras</li><li>CNN</li></ul>
-              <div class="links">
-                <a href="https://github.com/dmoyitacast/mcdia_deep_learning" target="_blank" rel="noopener"><span lang="es">Repositorio</span><span lang="en">Repository</span> →</a>
-                <a href="https://colab.research.google.com/github/dmoyitacast/mcdia_deep_learning/blob/main/food_classification_cnn.ipynb" target="_blank" rel="noopener"><span lang="es">Abrir en Colab</span><span lang="en">Open in Colab</span> →</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card reveal" data-cat="stats">
-            <div class="thumb"><img src="assets/img/timeseries.png" alt="Boeing price forecast vs actual" loading="lazy"></div>
-            <div class="card-body">
-              <p class="kicker">Time Series</p>
-              <h3><span lang="es">Precio y volatilidad de Boeing</span><span lang="en">Boeing stock price and volatility</span></h3>
-              <p class="desc">
-                <span lang="es">ARIMA para la media y eGARCH para la volatilidad, con contrastes formales y predicción a 5 días mediante 1.000 simulaciones Monte Carlo.</span>
-                <span lang="en">ARIMA for the mean and eGARCH for volatility, with formal tests and a 5-day forecast from 1,000 Monte Carlo simulations.</span>
-              </p>
-              <p class="metric"><span lang="es">Reales dentro del IC 95%</span><span lang="en">Actuals inside 95% CI</span> <strong>5 / 5</strong></p>
-              <ul class="tags"><li>R</li><li>rugarch</li><li>ARIMA</li><li>GARCH</li></ul>
-              <div class="links">
-                <a href="https://github.com/dmoyitacast/mcdia_time_series" target="_blank" rel="noopener"><span lang="es">Repositorio</span><span lang="en">Repository</span> →</a>
-                <a href="https://dmoyitacast.github.io/mcdia_time_series/boeing_time_series.html" target="_blank" rel="noopener"><span lang="es">Informe</span><span lang="en">Report</span> →</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card reveal" data-cat="ml">
-            <div class="thumb"><img src="assets/img/kernel.png" alt="Decision boundaries of my SVC vs scikit-learn" loading="lazy"></div>
-            <div class="card-body">
-              <p class="kicker">Kernel Methods &amp; Neural Networks</p>
-              <h3><span lang="es">kNN, SVC y MLP desde cero</span><span lang="en">kNN, SVC and MLP from scratch</span></h3>
-              <p class="desc">
-                <span lang="es">Implementación con NumPy de k-vecinos, un SVC con kernel RBF entrenado con SMO y un perceptrón multicapa con backpropagation, validados frente a scikit-learn.</span>
-                <span lang="en">NumPy implementations of k-nearest neighbours, an RBF-kernel SVC trained with SMO and a multilayer perceptron with backpropagation, validated against scikit-learn.</span>
-              </p>
-              <p class="metric"><span lang="es">R² del MLP propio</span><span lang="en">Own MLP R²</span> <strong>0.993</strong></p>
-              <ul class="tags"><li>Python</li><li>NumPy</li><li>SVM</li><li>MLP</li></ul>
-              <div class="links"><a href="https://github.com/dmoyitacast/mcdia_kernel_methods_neural_networks" target="_blank" rel="noopener"><span lang="es">Repositorio</span><span lang="en">Repository</span> →</a></div>
-            </div>
-          </article>
-
-          <article class="card reveal" data-cat="ml">
-            <div class="thumb"><img src="assets/img/unsupervised.png" alt="Word cloud of the space cluster" loading="lazy"></div>
-            <div class="card-body">
-              <p class="kicker">Unsupervised Learning</p>
-              <h3><span lang="es">Descubriendo temáticas en 3.000 documentos</span><span lang="en">Discovering topics in 3,000 documents</span></h3>
-              <p class="desc">
-                <span lang="es">TF-IDF calculado desde cero, filtrado por transition point, PCA y K-Means. Encuentra 4 temas muy limpios: religión, tecnología, espacio y deportes.</span>
-                <span lang="en">TF-IDF computed from scratch, transition-point filtering, PCA and K-Means. It finds 4 clean topics: religion, technology, space and sports.</span>
-              </p>
-              <p class="metric"><span lang="es">Dimensiones</span><span lang="en">Dimensions</span> <strong><span lang="es">20.529 → 330</span><span lang="en">20,529 → 330</span></strong></p>
-              <ul class="tags"><li>Python</li><li>scikit-learn</li><li>Plotly</li><li>NLP</li></ul>
-              <div class="links">
-                <a href="https://github.com/dmoyitacast/mcdia_unsupervised_learning" target="_blank" rel="noopener"><span lang="es">Repositorio</span><span lang="en">Repository</span> →</a>
-                <a href="https://nbviewer.org/github/dmoyitacast/mcdia_unsupervised_learning/blob/main/code/unsupervised_learning_david_moya.ipynb" target="_blank" rel="noopener"><span lang="es">Gráficos interactivos</span><span lang="en">Interactive charts</span> →</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card reveal" data-cat="stats">
-            <div class="thumb"><img src="assets/img/regression.png" alt="Correlation matrix" loading="lazy"></div>
-            <div class="card-body">
-              <p class="kicker">Basic Regression</p>
-              <h3><span lang="es">¿Qué explica el PIB per cápita de un país?</span><span lang="en">What drives a country's GDP per capita?</span></h3>
-              <p class="desc">
-                <span lang="es">Regresión lineal múltiple sobre 227 países: imputación por región, transformaciones logarítmicas, Best Subset Selection, diagnóstico de outliers y comprobación de hipótesis.</span>
-                <span lang="en">Multiple linear regression on 227 countries: regional imputation, log transforms, Best Subset Selection, outlier diagnostics and assumption checks.</span>
-              </p>
-              <p class="metric"><span lang="es">R² ajustado</span><span lang="en">Adjusted R²</span> <strong>0.824</strong></p>
-              <ul class="tags"><li>Python</li><li>statsmodels</li><li>OLS</li></ul>
-              <div class="links"><a href="https://github.com/dmoyitacast/mcdia_basic_regression" target="_blank" rel="noopener"><span lang="es">Repositorio</span><span lang="en">Repository</span> →</a></div>
-            </div>
-          </article>
-        </div>
+        <div class="filters reveal" id="project-filters" role="group" aria-label="Filter"></div>
+        <div class="grid" id="project-grid"></div>
+        <noscript><p class="section-sub"><a href="https://github.com/dmoyitacast">github.com/dmoyitacast</a></p></noscript>
       </div>
     </section>
 
@@ -349,6 +245,7 @@
     </div>
   </footer>
 
+  <script src="projects.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

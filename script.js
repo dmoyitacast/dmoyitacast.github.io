@@ -55,6 +55,75 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
+  /* ---------- Projects (data in projects.js) ---------- */
+  var projects = window.PROJECTS || [];
+  var TYPES = {
+    client: { es: "Cliente", en: "Client", plural: { es: "Cliente", en: "Client" } },
+    personal: { es: "Personal", en: "Personal", plural: { es: "Personales", en: "Personal" } },
+    academic: { es: "Académico", en: "Academic", plural: { es: "Académicos", en: "Academic" } }
+  };
+  var ICONS = {
+    chart: '<path d="M3 20h18M6 16l4-5 3 3 5-7"/>',
+    map: '<path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',
+    bank: '<path d="M3 10 12 4l9 6M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20h18"/>',
+    shop: '<path d="M4 8h16l-1.5 12h-13L4 8zM9 8V6a3 3 0 0 1 6 0v2"/>',
+    health: '<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>',
+    energy: '<path d="M13 3 5 14h6l-1 7 8-11h-6l1-7z"/>',
+    brain: '<circle cx="5" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="19" cy="18" r="2"/><path d="m7 7 3.4 3.6M7 17l3.4-3.6M13.6 10.4 17 7M13.6 13.6 17 17"/>'
+  };
+
+  function esc(t) {
+    return String(t).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  // Bilingual text: a plain string, or { es, en } rendered as two spans toggled by CSS
+  function bi(v) {
+    if (v == null) return "";
+    if (typeof v === "string") return esc(v);
+    return '<span lang="es">' + esc(v.es) + '</span><span lang="en">' + esc(v.en || v.es) + "</span>";
+  }
+
+  function cardHTML(p) {
+    var type = TYPES[p.type] || TYPES.academic;
+    var badges = '<span class="badge badge-' + esc(p.type) + '">' + bi(type) + "</span>";
+    if (p.status === "in-progress") badges += '<span class="badge badge-progress">' + bi({ es: "En curso", en: "In progress" }) + "</span>";
+    var thumb = p.image
+      ? '<img src="' + esc(p.image) + '" alt="' + esc(p.imageAlt || "") + '" loading="lazy">'
+      : '<div class="placeholder"><svg viewBox="0 0 24 24" width="56" height="56" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">' + (ICONS[p.icon] || ICONS.chart) + "</svg>" + (p.sector ? '<span>' + bi(p.sector) + "</span>" : "") + "</div>";
+    var metric = p.metric ? '<p class="metric">' + bi(p.metric.label) + " <strong>" + bi(p.metric.value) + "</strong></p>" : "";
+    var tags = (p.tags || []).map(function (t) { return "<li>" + bi(t) + "</li>"; }).join("");
+    var links = (p.links || []).map(function (l) {
+      return '<a href="' + esc(l.url) + '" target="_blank" rel="noopener">' + bi(l.label) + " →</a>";
+    }).join("");
+    return '<article class="card reveal" data-type="' + esc(p.type) + '">' +
+      '<div class="thumb' + (p.image ? "" : " no-image") + '">' + thumb + '<div class="badges">' + badges + "</div></div>" +
+      '<div class="card-body">' +
+        (p.kicker ? '<p class="kicker">' + bi(p.kicker) + "</p>" : "") +
+        "<h3>" + bi(p.title) + "</h3>" +
+        '<p class="desc">' + bi(p.description) + "</p>" +
+        metric +
+        (tags ? '<ul class="tags">' + tags + "</ul>" : "") +
+        (links ? '<div class="links">' + links + "</div>" : "") +
+      "</div></article>";
+  }
+
+  var grid = document.getElementById("project-grid");
+  var filterBox = document.getElementById("project-filters");
+  if (grid) {
+    grid.innerHTML = projects.map(cardHTML).join("");
+    // Only offer filters for types that actually have projects
+    var present = Object.keys(TYPES).filter(function (t) { return projects.some(function (p) { return p.type === t; }); });
+    if (present.length > 1) {
+      filterBox.innerHTML = '<button class="filter active" data-filter="all">' + bi({ es: "Todos", en: "All" }) + "</button>" +
+        present.map(function (t) { return '<button class="filter" data-filter="' + t + '">' + bi(TYPES[t].plural) + "</button>"; }).join("");
+    } else {
+      filterBox.remove();
+    }
+    var countEl = document.getElementById("projects-count");
+    if (countEl) countEl.dataset.target = projects.filter(function (p) { return p.status === "done"; }).length;
+  }
+
   /* ---------- Scroll reveal + counters ---------- */
   function animateCounter(el) {
     var target = parseFloat(el.dataset.target), suffix = el.dataset.suffix || "";
@@ -96,7 +165,7 @@
       Array.prototype.forEach.call(filters, function (b) { b.classList.toggle("active", b === btn); });
       var f = btn.dataset.filter;
       Array.prototype.forEach.call(cards, function (c) {
-        c.classList.toggle("hidden", f !== "all" && c.dataset.cat !== f);
+        c.classList.toggle("hidden", f !== "all" && c.dataset.type !== f);
       });
     });
   });
