@@ -4,6 +4,7 @@
   type:    "client" | "personal" | "academic"
   status:  "done" | "in-progress"
   image:   path under assets/img/ (optional; without it the card shows a placeholder with `icon`)
+  imageFull: optional larger/uncropped version shown when the image is clicked
   icon:    placeholder icon when there is no image: "chart" | "map" | "bank" | "shop" | "health" | "energy" | "brain"
   sector:  optional, mainly for anonymous client projects, e.g. { es: "Banca", en: "Banking" }
   metric:  optional highlighted result
@@ -11,6 +12,21 @@
   Text fields are bilingual: { es: "...", en: "..." }. Projects are shown in this order.
 */
 window.PROJECTS = [
+  {
+    type: "personal",
+    status: "in-progress",
+    kicker: { es: "Producto de datos · Geoespacial", en: "Data product · Geospatial" },
+    title: { es: "FreePark: ¿dónde es más fácil aparcar?", en: "FreePark: where is it easiest to park?" },
+    description: {
+      es: "Idea de app que, a partir del destino en Waze o Google Maps, estime la probabilidad de encontrar aparcamiento en las calles cercanas. Fase actual: evaluar la viabilidad con datos abiertos del Ayuntamiento de Madrid (calles SER, ocupación de parkings en tiempo real y ~13 GB de tiques de parquímetro).",
+      en: "App idea that, from a destination set in Waze or Google Maps, would estimate the probability of finding a parking spot in nearby streets. Current phase: assessing feasibility with Madrid City Council open data (regulated-parking streets, real-time car park occupancy and ~13 GB of parking-meter tickets)."
+    },
+    image: "assets/img/freepark.png",
+    imageFull: "assets/img/freepark_full.png",
+    imageAlt: "Map of public car parks, regulated parking street segments and district boundaries in Madrid",
+    tags: ["Python", "pandas", "GeoPandas", "Parquet", "SOAP API", "PostgreSQL"],
+    links: []
+  },
   {
     type: "academic",
     status: "done",

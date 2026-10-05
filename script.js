@@ -89,7 +89,7 @@
     var badges = '<span class="badge badge-' + esc(p.type) + '">' + bi(type) + "</span>";
     if (p.status === "in-progress") badges += '<span class="badge badge-progress">' + bi({ es: "En curso", en: "In progress" }) + "</span>";
     var thumb = p.image
-      ? '<img src="' + esc(p.image) + '" alt="' + esc(p.imageAlt || "") + '" loading="lazy">'
+      ? '<img class="zoomable" src="' + esc(p.image) + '" data-full="' + esc(p.imageFull || p.image) + '" alt="' + esc(p.imageAlt || "") + '" loading="lazy" tabindex="0" role="button">'
       : '<div class="placeholder"><svg viewBox="0 0 24 24" width="56" height="56" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">' + (ICONS[p.icon] || ICONS.chart) + "</svg>" + (p.sector ? '<span>' + bi(p.sector) + "</span>" : "") + "</div>";
     var metric = p.metric ? '<p class="metric">' + bi(p.metric.label) + " <strong>" + bi(p.metric.value) + "</strong></p>" : "";
     var tags = (p.tags || []).map(function (t) { return "<li>" + bi(t) + "</li>"; }).join("");
@@ -123,6 +123,41 @@
     var countEl = document.getElementById("projects-count");
     if (countEl) countEl.dataset.target = projects.filter(function (p) { return p.status === "done"; }).length;
   }
+
+  /* ---------- Image viewer (click a project image to enlarge it) ---------- */
+  var viewer = document.createElement("div");
+  viewer.className = "viewer";
+  viewer.setAttribute("role", "dialog");
+  viewer.setAttribute("aria-modal", "true");
+  viewer.hidden = true;
+  viewer.innerHTML = '<button class="viewer-close" type="button" aria-label="Cerrar / Close">&times;</button><img alt="">';
+  document.body.appendChild(viewer);
+  var viewerImg = viewer.querySelector("img");
+  var lastFocus = null;
+
+  function openViewer(img) {
+    lastFocus = img;
+    viewerImg.src = img.dataset.full || img.src;
+    viewerImg.alt = img.alt;
+    viewer.hidden = false;
+    document.body.style.overflow = "hidden";
+    viewer.querySelector(".viewer-close").focus();
+  }
+  function closeViewer() {
+    viewer.hidden = true;
+    document.body.style.overflow = "";
+    if (lastFocus) lastFocus.focus();
+  }
+  document.addEventListener("click", function (e) {
+    if (e.target.classList && e.target.classList.contains("zoomable")) openViewer(e.target);
+    else if (!viewer.hidden && e.target !== viewerImg) closeViewer();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (!viewer.hidden && e.key === "Escape") closeViewer();
+    else if ((e.key === "Enter" || e.key === " ") && e.target.classList && e.target.classList.contains("zoomable")) {
+      e.preventDefault(); openViewer(e.target);
+    }
+  });
 
   /* ---------- Scroll reveal + counters ---------- */
   function animateCounter(el) {
